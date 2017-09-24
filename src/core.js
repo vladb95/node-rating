@@ -32,7 +32,7 @@ function next(state) {
 }
 
 function vote(state, item) {
-  return state.updateIn(["vote", "tally", item], 0, tally => tally + 1);
+  return state.updateIn(["tally", item], 0, tally => tally + 1);
 }
 
 module.exports = {

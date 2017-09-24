@@ -37,69 +37,51 @@ describe("application logic", () => {
   describe("vote", () => {
     it("vote for selected item", () => {
       const state = Map({
-        vote: Map({
-          pair: List.of("25", "147 hours")
-        }),
-        entries: List()
+        pair: List.of("25", "147 hours")
       });
       const nextState = vote(state, "25");
       expect(nextState).to.equal(
         Map({
-          vote: Map({
-            pair: List.of("25", "147 hours"),
-            tally: Map({
-              "25": 1
-            })
-          }),
-          entries: List()
+          pair: List.of("25", "147 hours"),
+          tally: Map({
+            "25": 1
+          })
         })
       );
     });
 
     it("vote for already voted item", () => {
       const state = Map({
-        vote: Map({
-          pair: List.of("25", "147 hours"),
-          tally: Map({
-            "25": 1,
-            "147 hours": 12
-          })
-        }),
-        entries: List()
+        pair: List.of("25", "147 hours"),
+        tally: Map({
+          "25": 1,
+          "147 hours": 12
+        })
       });
       const nextState = vote(state, "25");
       expect(nextState).to.equal(
         Map({
-          vote: Map({
-            pair: List.of("25", "147 hours"),
-            tally: Map({
-              "25": 2,
-              "147 hours": 12
-            })
-          }),
-          entries: List()
+          pair: List.of("25", "147 hours"),
+          tally: Map({
+            "25": 2,
+            "147 hours": 12
+          })
         })
       );
     });
 
-    it("winner to end of the list", () => {
+    /*it("winner to end of the list", () => {
       const state = Map({
-        vote: Map({
-          pair: List.of("25", "147 hours"),
-          tally: Map({
-            "25": 4,
-            "147 hours": 2
-          })
-        }),
-        entries: List.of("Sunshine", "Millions", "7th mile")
+        pair: List.of("25", "147 hours"),
+        tally: Map({
+          "25": 4,
+          "147 hours": 2
+        })
       });
       const nextState = next(state);
       expect(nextState).to.equal(
         Map({
-          vote: Map({
-            pair: List.of("Sunshine", "Millions")
-          }),
-          entries: List.of("7th mile", "25")
+          pair: List.of("Sunshine", "Millions")
         })
       );
     });
@@ -143,6 +125,6 @@ describe("application logic", () => {
           winner: "25"
         })
       );
-    });
+    });*/
   });
 });
